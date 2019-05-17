@@ -3,7 +3,7 @@
     v-model="value"
     :data="data"
     :marks="true"
-    :width="500"
+    :width="width"
     @change="onChange"
     :disabled="disabled"
     :contained="true"
@@ -18,7 +18,7 @@ export default {
   components: {
     VueSlider
   },
-  props: ["values", "selected", "disabled"],
+  props: ["values", "selected", "disabled", "width"],
   data: function() {
     return {
       value: this.selected,

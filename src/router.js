@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Potholes from "./views/Potholes.vue";
-import Paving from "./views/Paving.vue";
-import Home from "./views/Home.vue";
+import PotholesPage from "@/views/Potholes";
+import PavingPage from "@/views/Paving";
+import HomePage from "@/views/Home";
 
 Vue.use(Router);
 
@@ -11,15 +11,19 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: Home
+      component: HomePage
     },
     {
       path: "/paving",
-      component: Paving
+      component: PavingPage
     },
     {
       path: "/potholes",
-      component: Potholes
+      component: PotholesPage
     }
-  ]
+  ],
+  // always return to top
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  }
 });
