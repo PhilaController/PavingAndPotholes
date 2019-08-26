@@ -10,11 +10,10 @@
       periods and have each component of the dashboard update accordingly.
     </p>
 
-    <!-- Show a loader  -->
-    <Loader v-if="isLoading"/>
-
     <!-- Dashboard  -->
-    <div v-if="!isLoading" class="dashboard mt-5">
+    <div class="dashboard position-relative mt-5">
+      <Loader v-if="isLoading"/>
+
       <!-- Totals Cards -->
       <TotalsCard :data="data"/>
 

@@ -7,14 +7,12 @@ module.exports = {
   configureWebpack: {
     externals: {
       jquery: "jQuery",
-      $: "jQuery",
-      google: "google"
+      $: "jQuery"
     },
     plugins: [
       new webpack.ProvidePlugin({
         $: "jquery",
-        jQuery: "jquery",
-        google: "google"
+        jQuery: "jquery"
       })
     ],
     optimization: {
@@ -26,11 +24,6 @@ module.exports = {
           test: /\.html$/,
           exclude: /node_modules/,
           use: ["html-loader"]
-        },
-        {
-          test: /\.gz$/,
-          enforce: "pre",
-          use: "gzip-loader"
         }
       ]
     }

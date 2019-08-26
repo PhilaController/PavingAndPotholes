@@ -79,7 +79,7 @@ export default {
   },
   computed: {
     addHexBins() {
-      return this.geojson && this.data;
+      return (this.geojson !== null) & (this.data != null);
     },
     title() {
       return this.capitalize(this.activeLayer);

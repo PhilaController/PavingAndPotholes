@@ -90,7 +90,10 @@ export default {
       this.allOptions.forEach(option => {
         layer = this.getLayer(option);
         if (this.isActive(option)) {
-          if (!map.hasLayer(layer)) map.addLayer(layer);
+          if (!map.hasLayer(layer)) {
+            map.addLayer(layer);
+            layer.setStyle(this.styleFunction); // set zoom style
+          }
         } else {
           if (map.hasLayer(layer)) map.removeLayer(layer);
         }
@@ -179,7 +182,6 @@ export default {
 
       // remove labels while zooming
       baseMap.mapObject.on("zoomstart", () => {
-        // this.isLoading = false;
         baseMap.mapObject.removeLayer(baseMap.layers.labels);
       });
 
@@ -193,7 +195,6 @@ export default {
 
         // add labels back
         baseMap.mapObject.addLayer(baseMap.layers.labels);
-        // this.isLoading = false;
       });
     });
   }

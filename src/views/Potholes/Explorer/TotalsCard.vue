@@ -83,17 +83,18 @@ export default {
     group() {
       return this.data.groupAll().reduce(
         function(p, v) {
-          ++p.n;
-          p.tot += v.count;
+          if (v.kind == "request") p.requests += 1;
+          else p.repairs += v.count;
+
           return p;
         },
         function(p, v) {
-          --p.n;
-          p.tot -= v.count;
+          if (v.kind == "request") p.requests -= 1;
+          else p.repairs -= v.count;
           return p;
         },
         function() {
-          return { n: 0, tot: 0 };
+          return { requests: 0, repairs: 0 };
         }
       );
     }
@@ -106,7 +107,7 @@ export default {
       this.requests
         .formatNumber(format(",d"))
         .valueAccessor(function(d) {
-          return d.n;
+          return d.requests;
         })
         .group(this.group);
 
@@ -114,7 +115,7 @@ export default {
       this.repairs
         .formatNumber(format(",d"))
         .valueAccessor(function(d) {
-          return d.tot;
+          return d.repairs;
         })
         .group(this.group);
 

@@ -1,8 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import { timeParse } from "d3-time-format";
+import { min, max } from "d3-array";
+import { json } from "d3-fetch";
 let crossfilter = require("crossfilter2");
-import axios from "axios";
 
 Vue.use(Vuex);
 const parseTime = timeParse("%Y-%m-%d %H:%M:%S");
@@ -17,19 +18,28 @@ export default new Vuex.Store({
     selectedHood: null, // the currently selected neighborhood
     dateFilterMin: null, // the min date selected
     dateFilterMax: null, // the max data selected
-    mapVariable: "repairs" // the variable shown on the PotholeExplorer map
+    mapVariable: "repairs", // the variable shown on the PotholeExplorer map
+    globalStartDate: null, // start data for data
+    globalEndDate: null // end date for data
   },
   actions: {
     fetchData(store) {
       let url =
         "https://s3.us-east-2.amazonaws.com/streets-data-release/data.json";
 
-      // return axios.get(url).then(function({ data: _ }) {
-      return import("@/data/street_defects.json").then(function({
-        default: _
-      }) {
+      return json(url).then(function(_) {
         _.forEach(function(d) {
           d["date"] = parseTime(d["date"]);
+        });
+
+        // set global start/end dates
+        store.commit("setValue", {
+          value: min(_.map(d => d.date)),
+          key: "globalStartDate"
+        });
+        store.commit("setValue", {
+          value: max(_.map(d => d.date)),
+          key: "globalEndDate"
         });
 
         // create a crossfilter  object
@@ -53,12 +63,9 @@ export default new Vuex.Store({
       });
     },
     fetchNeighborhoods(store) {
-      return import("@/data/PhillyNeighborhoods.json").then(function({
-        default: _
-      }) {
-        store.commit("setValue", { value: _, key: "neighborhoodsJSON" });
-        return _;
-      });
+      let _ = require("@/data/PhillyNeighborhoods.json");
+      store.commit("setValue", { value: _, key: "neighborhoodsJSON" });
+      return _;
     }
   },
   mutations: {

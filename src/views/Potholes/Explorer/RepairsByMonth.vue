@@ -17,7 +17,7 @@
         {{ timeFilterText }}
       </div>
       <!-- Monthly Chart -->
-      <div id="monthly-repairs-chart" class="w-100"></div>
+      <div id="monthly-repairs-chart"></div>
     </div>
   </div>
 </template>
@@ -36,6 +36,8 @@ export default {
     return {
       timeFilterText: null,
       showFilterReset: false,
+      minDate: null,
+      maxDate: null,
       chart: null,
       helpMessage: `Click and drag the brush filter
         to select a specific time period to view.`
@@ -46,12 +48,6 @@ export default {
     this.updateDateFilterState([this.minDate, this.maxDate]);
   },
   computed: {
-    minDate() {
-      return new Date(2013, 0, 1);
-    },
-    maxDate() {
-      return new Date(2018, 5, 30);
-    },
     dimension() {
       return this.data.dimension(d => d3.timeMonth(d.date));
     }
@@ -59,6 +55,11 @@ export default {
   watch: {
     data: function(val) {
       if (val) {
+        // set min/max Date
+        this.minDate = this.$store.state.globalStartDate;
+        this.maxDate = this.$store.state.globalEndDate;
+
+        // draw Chart
         this.drawChart();
       }
     }
@@ -98,13 +99,12 @@ export default {
 
       let width = $(window).width();
       let marginLeft = width > 500 ? 70 : 40;
-      let xTicks = width > 500 ? 12 : 2;
+      let xTicks = width > 500 ? 16 : 2;
 
       // set the options
       this.chart
         .useViewBoxResizing(true)
         .margins({ left: marginLeft, top: 0, right: 10, bottom: 40 })
-        .height(250)
         .x(d3.scaleTime().domain([this.minDate, this.maxDate]))
         .xUnits(d3.timeMonths)
         .elasticY(true)
@@ -175,6 +175,10 @@ export default {
 </script>
 
 <style>
+#monthly-repairs-chart {
+  width: 100%;
+  height: 250px;
+}
 /* set the time filter selection */
 .dc-chart .brush rect.selection {
   fill: #444 !important;

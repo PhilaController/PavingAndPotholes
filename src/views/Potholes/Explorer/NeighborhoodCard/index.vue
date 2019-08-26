@@ -22,13 +22,13 @@
       <div class="row">
         <!-- Bar Chart of Repairs by Neighborhood -->
         <div class="col-md-4 col-sm-12">
-          <BarChart class="h-100" height="1100" :data="data"/>
+          <BarChart :data="data"/>
         </div>
 
         <!-- Streets Defects Map + Top Streets Table -->
-        <div class="col-md-8 col-sm-12 d-flex flex-column mt-3">
-          <Map class="hex-map-component" height="600" :data="data" :activeLayer="activeLayer"/>
-          <TopStreetsTable class="mt-3 top-streets-component" :data="data"/>
+        <div class="col-md-8 col-sm-12 d-flex flex-column justify-content-between mt-3">
+          <Map :height="600" :data="data" :activeLayer="activeLayer"/>
+          <TopStreetsTable class="mt-3" :data="data"/>
         </div>
       </div>
     </div>
@@ -85,15 +85,6 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.hex-map-component {
-  flex: 1;
-}
-.top-streets-component {
-  flex: 1;
-}
-</style>
 
 
 

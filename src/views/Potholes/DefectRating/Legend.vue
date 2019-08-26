@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex justify-content-center" id="defect-rating-legend">
     <div class="d-flex flex-column justify-content-center">
-      <div class="legend-title d-flex justify-content-center w-100">The Street Defect Rating</div>
+      <div class="legend-title d-flex justify-content-center w-100">The Street Defect Repair Rating</div>
       <div class="d-flex justify-content-between">
         <div class="legend-label">Fewer Defect Repairs</div>
         <div class="legend-label">Citywide Average</div>

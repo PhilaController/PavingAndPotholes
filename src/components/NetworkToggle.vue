@@ -1,5 +1,5 @@
 <template>
-  <div class="control-panel flex-centered">
+  <div class="control-panel flex-centered" ref="networkToggle">
     <label class="control-panel-label">Network Type</label>
 
     <!-- Toggles -->
@@ -20,7 +20,6 @@
           <input
             v-else
             :type="type"
-            v-model="activeNetwork"
             :value="i"
             @change="toggleNetwork(i, true)"
             :disabled="isLoading"
@@ -57,14 +56,32 @@ export default {
     for (let i = 0; i < this.actives.length; i++) {
       this.networks[this.actives[i]].active = true;
     }
+    if (this.type == "radio") {
+      this.setRadioChecked();
+    }
   },
   methods: {
+    removedChecked() {
+      $(this.$refs.networkToggle)
+        .find("input:checked")
+        .prop("checked", false);
+    },
+    setRadioChecked() {
+      this.removedChecked();
+      $(this.$refs.networkToggle)
+        .find(`[value='${this.activeNetwork}']`)
+        .prop("checked", true);
+    },
     showNetwork(network) {
       let exclude = this.exclude || [];
       return exclude.indexOf(network) == -1;
     },
     toggleNetwork(network, value) {
       if (this.isLoading) return;
+      if (this.type == "radio") {
+        this.activeNetwork = network;
+        this.setRadioChecked();
+      }
       this.$emit("change", network, value);
     }
   }

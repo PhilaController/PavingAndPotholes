@@ -29,7 +29,7 @@ function save_first_order() {
 }
 
 export default {
-  props: ["data", "height"],
+  props: ["data"],
   data() {
     return {
       chart: null,
@@ -88,7 +88,6 @@ export default {
 
       // set the options
       this.chart
-        .height(this.height)
         .useViewBoxResizing(true)
         .margins({ left: 10, top: 30, right: 10, bottom: 0 })
         .renderTitle(false)
@@ -174,6 +173,7 @@ export default {
 <style>
 #hood-repairs-chart {
   width: 100%;
+  height: 1100px;
 }
 #hood-repairs-chart text {
   pointer-events: none;

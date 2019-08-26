@@ -1,5 +1,5 @@
 <template>
-  <div id="loading">
+  <div class="loading-overlay">
     <div id="loader"></div>
   </div>
 </template>
@@ -12,14 +12,27 @@ export default {
 
 
 <style>
+.loading-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #fff;
+  opacity: 1;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 #loader {
-  border: 16px solid #f3f3f3;
+  border: 8px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
+  border-top: 8px solid #2c3e50;
+  width: 100px;
+  height: 100px;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
+  z-index: 11;
 }
 
 /* Safari */

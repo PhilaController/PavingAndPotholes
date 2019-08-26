@@ -22,8 +22,6 @@
     <div class="hood-dropdown mb-3 mt-3">
       <label class="mr-2 font-weight-bold">Zoom and center a neighborhood</label>
       <v-select
-        id="hood-dropdown-select"
-        class="hood-dropdown-select"
         ref="hoodDropdown"
         :options="uniqueHoods"
         placeholder="Select a neighborhood"
@@ -84,7 +82,7 @@ export default {
 .control-panel {
   font-size: 1.3rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 @media only screen and (max-width: 600px) {

@@ -76,7 +76,7 @@ export default {
         network: { label: "Network", format: null },
         count_: { label: "Repairs Since 2013", format: d3.format(",.0f") },
         rating: {
-          label: "Defect Rating",
+          label: "Rating",
           format: x => d3.format(".0f")(x) + "%"
         }
       };

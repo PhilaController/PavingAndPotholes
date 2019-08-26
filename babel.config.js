@@ -1,5 +1,10 @@
 module.exports = {
   presets: [
-    '@vue/app'
+    [
+      "@vue/app",
+      {
+        polyfills: ["es6.array.from", "es6.symbol"]
+      }
+    ]
   ]
-}
+};
