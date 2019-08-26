@@ -1,6 +1,5 @@
 <template>
   <div>
-    <DotNavbar selector=".section-title"/>
     <div class="paving text-left">
       <!-- Paving Responsibilities -->
       <h2 class="section-title text-center">Paving Responsibilities</h2>
@@ -30,7 +29,7 @@
       </p>
 
       <!-- network map -->
-      <StreetNetworksMap class="mt-1"/>
+      <StreetNetworksMap class="mt-1" />
 
       <!-- History of Paving -->
       <h2 class="section-title text-center mt-5">A History of Local + FAM Paving</h2>
@@ -74,7 +73,7 @@
       </p>
 
       <!-- miles paved -->
-      <MilesPavedCard/>
+      <MilesPavedCard />
 
       <p class="mt-3">
         The interactive map below shows which segments of the Local and FAM
@@ -105,7 +104,7 @@
       </p>
 
       <!-- paving map -->
-      <PavingMap class="mt-1"/>
+      <PavingMap class="mt-1" />
 
       <!-- Paving Costs-->
       <h2 class="section-title text-center mt-5">The Paving Process</h2>
@@ -178,7 +177,7 @@
           <div class="my-card-title">Paving-Related Costs</div>
         </div>
         <div class="card-body">
-          <PavingPerSqYardChart/>
+          <PavingPerSqYardChart />
         </div>
         <div class="card-footer">* Paving costs estimated through July 1, 2018.</div>
       </div>
@@ -191,7 +190,6 @@ import PavingMap from "@/cards/PavingMap.vue";
 import StreetNetworksMap from "@/cards/StreetNetworksMap.vue";
 import MilesPavedCard from "@/cards/MilesPaved.vue";
 import PavingPerSqYardChart from "@/cards/PavingPerSqYardChart.vue";
-import DotNavbar from "@/components/Navbar.vue";
 
 export default {
   name: "Paving",
@@ -199,8 +197,7 @@ export default {
     PavingMap,
     MilesPavedCard,
     PavingPerSqYardChart,
-    StreetNetworksMap,
-    DotNavbar
+    StreetNetworksMap
   }
 };
 </script>
