@@ -9,6 +9,10 @@ The interactive visualization is available [here](https://controller.phila.gov/p
 ![The Street Defect Rating](public/street_defect_index.png)
 ![The Pothole Explorer](public/pothole_explorer.png)
 
+## Tools
+
+Built using vue, d3, [dc.js](https://github.com/dc-js/dc.js), [esri-leaflet](https://github.com/Esri/esri-leaflet), and [vue-apexcharts](https://github.com/apexcharts/vue-apexcharts)
+
 ## Development
 
 #### Compiles and hot-reloads for development
