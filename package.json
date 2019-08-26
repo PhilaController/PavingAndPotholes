@@ -10,8 +10,9 @@
   "dependencies": {
     "@asymmetrik/leaflet-d3": "^4.4.0",
     "@mapbox/leaflet-pip": "^1.1.0",
-    "apexcharts": "^3.8.5",
-    "core-js": "^2.6.9",
+    "apexcharts": "^3.6.7",
+    "axios": "^0.18.1",
+    "core-js": "^2.6.5",
     "crossfilter2": "^1.4.7",
     "d3": "^5.11.0",
     "d3-hexbin": "^0.2.2",
