@@ -1,29 +1,20 @@
-# interactive
+# PavingAndPotholes
 
-## Project setup
-```
-npm install
-```
+The code behind the interactive visualization of the City of Philadelphia's recent history
+of paving and potholes.
 
-### Compiles and hot-reloads for development
+The interactive visualization is available [here](https://controller.phila.gov/philadelphia-audits/data-release-paving-and-potholes/#/).
+
+## Development
+
+#### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+#### Compiles and minifies for production
+
 ```
 npm run build
 ```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
